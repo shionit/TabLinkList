@@ -1,12 +1,14 @@
 
-alert("start!");
-
-output = "";
+function previewTabText(previewText) {
+  var previewArea = document.getElementById("preview")
+  previewArea.appendChild(document.createTextNode(previewText));
+  previewArea.select();
+}
 
 function readTabs() {
-  output = "";
   chrome.windows.getCurrent({"populate":true},
     function(currentWindow) {
+      var output = "";
       for (var i = 0; i < currentWindow.tabs.length; i++) {
         var title = currentWindow.tabs[i].title;
         var url = currentWindow.tabs[i].url;
@@ -14,43 +16,11 @@ function readTabs() {
         var item = title + "\n" + url;
         output += item + "\n\n"
       }
-      alert("1.output is:\n\n" + output);
+      previewTabText(output);
     });
-  alert("2.output is:\n\n" + output);
-  return output;
 }
-
-// テキストをクリップボードにコピーする関数
-function copyTextToClipboard(txt){
-  if (txt) {
-    try {
-      var copyArea = document.getElementById("preview");
-      copyArea.select();
-      document.execCommand("Copy");
-    } catch (e) {
-      alert(e);
-    }
-  }
-}
-
 
 document.addEventListener('DOMContentLoaded', function() {
   readTabs();
-  alert("3.output is:\n\n" + output);
-
-  try {
-    var previewArea = document.getElementById("preview")
-    previewArea.appendChild(document.createTextNode(output));
-    alert("readed!" + output);
-  } catch (e) {
-    alert(e);
-  }
-
-  //copyTextToClipboard(output);
-  copyTextToClipboard("Wow! This is Copy test.");
-
-  alert("copy done!");
-
-  alert("end");
 });
 
