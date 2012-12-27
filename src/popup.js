@@ -31,7 +31,7 @@ function readTabs() {
         var item = title + "\n" + url;
         output += item + "\n\n"
         
-        appendTabItem(tab);
+        appendTabItem(currentWindow.tabs[i]);
       }
 
       previewTabText(output);
