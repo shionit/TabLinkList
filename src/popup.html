@@ -4,16 +4,21 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="popup.js"></script>
+    <style>
+      div.tabItem { font-size:10pt; }
+      label { cursor:pointer; }
+      label:hover { background-color: #ccffcc; }
+    </style>
     <title>TabLinkList</title>
   </head>
   <body style="min-width:250px">
     <div id="target_area">
-      <div id="tabs">
+      <div id="tabs" style="height:320px; overflow:auto;">
         <div id="tab_template" class="tabItem"><input type="checkbox" value="tab_id" checked="checked"/></div>
       </div>
     </div>
     <div id="preview_area">
-      <textarea id="preview" rows="8" cols="60" readonly="readonly"></textarea>
+      <textarea id="preview" rows="12" cols="60" readonly="readonly" style="width:100%; background-color:#cccccc"></textarea>
     </div>
   </body>
 </html>
