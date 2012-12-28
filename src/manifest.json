@@ -1,10 +1,7 @@
 {
   "name": "TabLinkList",
   "description": "This extension makes list of title and URL from selected tabs.",
-  "version": "0.1",
-//  "background": {
-//    "scripts": ["popup.js"]
-//  },
+  "version": "0.2",
   "permissions": [
   	"tabs"
   ],
