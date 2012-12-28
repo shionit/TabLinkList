@@ -80,7 +80,27 @@ function initializeTabList() {
     });
 }
 
+function toggleSelectAll(checked) {
+  var checkboxes = document.getElementsByTagName("input");
+
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].id.substring(0, 4) == "tab_") {
+      checkboxes[i].checked = checked;
+    }
+  }
+  refreshPreviewText();
+}
+
+function initializeAllCheck() {
+  // add event listener
+  var allCheck = document.getElementById("all_check");
+  allCheck.addEventListener('click', function() {
+    toggleSelectAll(this.checked);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initializeTabList();
+  initializeAllCheck();
 });
 
