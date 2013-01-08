@@ -3,10 +3,11 @@
   "description": "This extension makes list of title and URL from selected tabs.",
   "version": "0.2",
   "permissions": [
-  	"tabs"
+    "tabs"
   ],
+  "icons": { "48": "icon48.png"},
   "browser_action": {
-//    "default_icon": "tab_link_list.ico",
+    "default_icon": "icon48.png",
     "default_title": "TabLinkList",
     "default_popup": "popup.html"
   },
