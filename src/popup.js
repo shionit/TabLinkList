@@ -107,13 +107,20 @@ function initializeAllCheck() {
   });
 }
 
+// Copy provided text to the clipboard.
+function copyTextToClipboard(text) {
+  var copyFrom = document.createElement("textarea");
+  copyFrom.value = text;
+  document.body.appendChild(copyFrom);
+  copyFrom.select();
+  document.execCommand("Copy");
+  document.body.removeChild(copyFrom);
+}
+
+// Copy text from preview textarea
 function copyToClipboard(){
   var textbox = document.getElementById("preview");
-
-  textbox.focus();
-  textbox.select();
-  document.execCommand("Copy");
-  textbox.blur(); 
+  copyTextToClipboard(textbox.value);
 }
 
 function initializeActions() {

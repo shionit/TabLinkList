@@ -10,10 +10,9 @@ label:hover {
 }
 
 span {
-  font-size:10pt;
+  font-size:11pt;
   font-weight: bold;
   padding-left:10px;
-  padding-right:120px;
   border-left:5px solid #006;
   border-top:1px solid #666;
 }
@@ -22,6 +21,13 @@ span {
 div.tabItem {
   font-size:10pt;
 }
+div.tabItem:nth-child(even) {
+  background-color: #eeeeee;
+}
+div.tabItem:nth-child(odd) {
+  background-color: #ffffff;
+}
+
 
 div.all_check_area {
   display:inline;
@@ -29,6 +35,9 @@ div.all_check_area {
 }
 
 #target_area {
+  padding: 5px 10px;
+  border:1px dotted #666;
+  -webkit-border-radius: 8px;
 }
 
 #all_check {
@@ -38,13 +47,11 @@ div.all_check_area {
 }
 
 #tabs {
-  padding: 5px 10px;
-  margin: 10px;
-  border:1px dotted #666;
-  -webkit-border-radius: 8px;
-
+  border:1px dashed #999;
   height:320px;
-  overflow:auto;
+  max-width: 360px;
+  overflow:scroll;
+  white-space: nowrap;
 }
 
 #action_area {
