@@ -1,6 +1,3 @@
-/**
-  * This file relies to ZeroClipboard.js and ZeroClipboard.swf
-  */
 
 function previewTabText(previewText) {
   var previewArea = document.getElementById("preview");
@@ -11,9 +8,6 @@ function previewTabText(previewText) {
   }
 
   previewArea.appendChild(document.createTextNode(previewText));
-  previewArea.select();
-
-  clip.setText(previewText);
 }
 
 var refreshPreviewText = function() {
@@ -72,12 +66,6 @@ function removeTemplate() {
   template.parentNode.removeChild(template);
 }
 
-function initializeZeroClipboard() {
-  ZeroClipboard.setMoviePath("zeroclipboard/ZeroClipboard.swf");
-  clip = new ZeroClipboard.Client();
-  clip.glue("copy_button");
-}
-
 function initializeTabList() {
   chrome.windows.getCurrent({"populate":true},
     function(currentWindow) {
@@ -110,9 +98,25 @@ function initializeAllCheck() {
   });
 }
 
+function copyToClipboard(){
+  var textbox = document.getElementById("preview");
+
+  textbox.focus();
+  textbox.select();
+  document.execCommand("Copy");
+  textbox.blur(); 
+}
+
+function initializeActions() {
+  var copyButton = document.getElementById("copy_button");
+  copyButton.addEventListener('click', function() {
+    copyToClipboard();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  initializeZeroClipboard();
   initializeTabList();
   initializeAllCheck();
+  initializeActions();
 });
 
