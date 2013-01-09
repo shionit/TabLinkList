@@ -47,6 +47,18 @@ div.all_check_area {
   overflow:auto;
 }
 
+#action_area {
+}
+
+#copy_button {
+  font-size:10pt;
+  width:80px;
+  text-align:center; 
+  border:1px solid black; 
+  background-color:#ccc; 
+  margin:2px; padding:2px;
+}
+
 #preview_area {
 }
 

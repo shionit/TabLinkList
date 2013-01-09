@@ -1,14 +1,13 @@
 
 function previewTabText(previewText) {
   var previewArea = document.getElementById("preview");
-  
+
   // clear current Text, if exist
   if (previewArea.firstChild) {
     previewArea.removeChild(previewArea.firstChild);
   }
-  
+
   previewArea.appendChild(document.createTextNode(previewText));
-  previewArea.select();
 }
 
 var refreshPreviewText = function() {
@@ -25,7 +24,7 @@ var refreshPreviewText = function() {
           var title = tab.title;
           var url = tab.url;
           var item = title + "\n" + url;
-          
+
           if (0 < output.length) {
             output += "\n\n";
           }
@@ -41,12 +40,12 @@ function appendTabItem(tab) {
   var template = document.getElementById("tab_template");
   var newItem = template.cloneNode(true); // clone with child node.
   newItem.removeAttribute("id");
-  
+
   // set checkbox attribute
   var checkbox = newItem.firstChild;
   checkbox.setAttribute("id", "tab_" + tab.id);
   checkbox.setAttribute("value", tab.id);
-  
+
   // append checkbox label
   var label = document.createElement("label");
   label.appendChild(document.createTextNode(tab.title));
@@ -99,8 +98,25 @@ function initializeAllCheck() {
   });
 }
 
+function copyToClipboard(){
+  var textbox = document.getElementById("preview");
+
+  textbox.focus();
+  textbox.select();
+  document.execCommand("Copy");
+  textbox.blur(); 
+}
+
+function initializeActions() {
+  var copyButton = document.getElementById("copy_button");
+  copyButton.addEventListener('click', function() {
+    copyToClipboard();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   initializeTabList();
   initializeAllCheck();
+  initializeActions();
 });
 

@@ -4,6 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="popup.css">
+    <script type="text/javascript" src="zeroclipboard/ZeroClipboard.js"></script>
     <script src="popup.js"></script>
     <title>TabLinkList</title>
   </head>
@@ -14,6 +15,9 @@
       <div id="tabs">
         <div id="tab_template" class="tabItem"><input type="checkbox" value="tab_id" checked="checked"/></div>
       </div>
+    </div>
+    <div id="action_area">
+      <input type="button" id="copy_button" value="Copy"/>
     </div>
     <div id="preview_area">
       <span>Output:</span>
