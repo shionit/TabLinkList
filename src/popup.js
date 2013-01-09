@@ -46,6 +46,15 @@ function appendTabItem(tab) {
   checkbox.setAttribute("id", "tab_" + tab.id);
   checkbox.setAttribute("value", tab.id);
 
+  if (tab.favIconUrl) {
+    // append favicon image
+    var image = document.createElement("img");
+    image.setAttribute("src", tab.favIconUrl);
+    image.setAttribute("width", 16);
+    image.setAttribute("height", 16);
+    newItem.appendChild(image);
+  }
+
   // append checkbox label
   var label = document.createElement("label");
   label.appendChild(document.createTextNode(tab.title));

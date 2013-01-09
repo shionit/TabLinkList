@@ -50,23 +50,25 @@ div.all_check_area {
 #action_area {
 }
 
-#copy_button {
-  font-size:10pt;
-  width:80px;
-  text-align:center; 
-  border:1px solid black; 
-  background-color:#ccc; 
-  margin:2px; padding:2px;
+.action_button {
+  border:1px solid #25729a; -webkit-border-radius: 8px; font-family:verdana, sans-serif; padding: 6px 6px 6px 6px; text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; text-align: center; color: #FFFFFF; background-color: #3093c7;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3093c7), color-stop(100%, #1c5a85));
+  background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85);
+  background-image: linear-gradient(top, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
+}
+.action_button:hover {
+  border:1px solid #1c5675; background-color: #26759e;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#26759e), color-stop(100%, #133d5b));
+  background-image: -webkit-linear-gradient(top, #26759e, #133d5b);
+  background-image: linear-gradient(top, #26759e, #133d5b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#26759e, endColorstr=#133d5b);
 }
 
 #preview_area {
+  display:none;
 }
 
 #preview {
   font-size:10pt;
   width:100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(200,200,200,0.5)), to(rgba(0,0,0,0.5)));
-  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.4) inset;
-  -webkit-border-radius: 8px;
 }
 
