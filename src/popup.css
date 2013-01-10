@@ -9,12 +9,16 @@ label:hover {
   background-color: #ccffff;
 }
 
-span {
+div.areaTitle {
   font-size:11pt;
   font-weight: bold;
-  padding-left:10px;
+  color: #dfdfdf;
+  margin: 2px;
+  padding: 2px 10px;
   border-left:5px solid #006;
-  border-top:1px solid #666;
+  background: -webkit-gradient(linear, left top, right top,  
+            from(rgba(0,0,128,1)),  
+            to(#fff));
 }
 
 
@@ -30,8 +34,13 @@ div.tabItem:nth-child(odd) {
 
 
 div.all_check_area {
+  margin-left: 40px;
+  padding: 2px;
+  color: #009;
   display:inline;
-  background: #ddddd;
+  background: #eeeeee;
+  border:1px slid #00f;
+  -webkit-border-radius: 4px;
 }
 
 #target_area {
