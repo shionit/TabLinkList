@@ -4,24 +4,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="popup.css">
-    <script type="text/javascript" src="zeroclipboard/ZeroClipboard.js"></script>
     <script src="popup.js"></script>
     <title>TabLinkList</title>
   </head>
   <body>
     <div id="target_area">
-      <span>Tabs:</span>
-      <div class="all_check_area"><input type="checkbox" id="all_check" checked="checked"/><label for="all_check">select all</label></div>
+      <div class="areaTitle">Tab Link List <div class="all_check_area"><input type="checkbox" id="all_check" checked="checked"/><label for="all_check">select all</label></div></div>
+      
       <div id="tabs">
         <div id="tab_template" class="tabItem"><input type="checkbox" value="tab_id" checked="checked"/></div>
       </div>
     </div>
     <div id="action_area">
-      <input type="button" id="copy_button" value="Copy"/>
-    </div>
-    <div id="preview_area">
-      <span>Output:</span>
-      <textarea id="preview" rows="12" cols="60" readonly="readonly"></textarea>
+      <input type="button" id="copy_button" class="action_button" value="Copy as Text"/>
     </div>
   </body>
 </html>
