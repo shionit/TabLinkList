@@ -1,40 +1,4 @@
 
-function previewTabText(previewText) {
-  var previewArea = document.getElementById("preview");
-
-  // clear current Text, if exist
-  if (previewArea.firstChild) {
-    previewArea.removeChild(previewArea.firstChild);
-  }
-
-  previewArea.appendChild(document.createTextNode(previewText));
-}
-
-var refreshPreviewText = function() {
-  chrome.windows.getCurrent({"populate":true},
-    function(currentWindow) {
-      var output = "";
-
-      for (var i = 0; i < currentWindow.tabs.length; i++) {
-        var tab = currentWindow.tabs[i];
-        var tabSelect = document.getElementById("tab_" + tab.id);
-
-        // if the tab is selected, add output.
-        if (tabSelect && tabSelect.checked) {
-          var title = tab.title;
-          var url = tab.url;
-          var item = title + "\n" + url;
-
-          if (0 < output.length) {
-            output += "\n\n";
-          }
-          output += item;
-        }
-      }
-      previewTabText(output);
-    });
-}
-
 function appendTabItem(tab) {
   // clone template node
   var template = document.getElementById("tab_template");
@@ -61,9 +25,6 @@ function appendTabItem(tab) {
   label.setAttribute("for", "tab_" + tab.id);
   newItem.appendChild(label);
 
-  // add onClick Event
-  newItem.addEventListener('click', refreshPreviewText);
-
   // add list
   var tabs = document.getElementById("tabs");
   tabs.appendChild(newItem);
@@ -83,7 +44,6 @@ function initializeTabList() {
         appendTabItem(currentWindow.tabs[i]);
       }
 
-      refreshPreviewText();
       removeTemplate();
     });
 }
@@ -96,7 +56,6 @@ function toggleSelectAll(checked) {
       checkboxes[i].checked = checked;
     }
   }
-  refreshPreviewText();
 }
 
 function initializeAllCheck() {
@@ -107,8 +66,8 @@ function initializeAllCheck() {
   });
 }
 
-// Copy provided text to the clipboard.
 function copyTextToClipboard(text) {
+  // Copy provided text to the clipboard.
   var copyFrom = document.createElement("textarea");
   copyFrom.value = text;
   document.body.appendChild(copyFrom);
@@ -117,10 +76,49 @@ function copyTextToClipboard(text) {
   document.body.removeChild(copyFrom);
 }
 
-// Copy text from preview textarea
+var copySimpleTextToClipboard = function(selectedTabs) {
+  var output = "";
+
+  // format output
+  for (var i = 0; i < selectedTabs.length; i++) {
+    var tab = selectedTabs[i];
+    
+    var title = tab.title;
+    var url = tab.url;
+    var item = title + "\n" + url;
+
+    if (0 < output.length) {
+      output += "\n\n";
+    }
+    output += item;
+  }
+  
+  // do action
+  copyTextToClipboard(output);
+}
+
+function processSelectedTabs(delegate) {
+  // aggregate selected tabs and delegate it to the parameter function.
+  chrome.windows.getCurrent({"populate":true},
+    function(currentWindow) {
+      var tabs = [];
+
+      for (var i = 0; i < currentWindow.tabs.length; i++) {
+        var tab = currentWindow.tabs[i];
+        var tabSelect = document.getElementById("tab_" + tab.id);
+
+        // if the tab is selected, add it.
+        if (tabSelect && tabSelect.checked) {
+          tabs.push(tab);
+        }
+      }
+      delegate(tabs);
+    });
+}
+
 function copyToClipboard(){
-  var textbox = document.getElementById("preview");
-  copyTextToClipboard(textbox.value);
+  // Copy text from selected tabs
+  processSelectedTabs(copySimpleTextToClipboard);
 }
 
 function initializeActions() {
@@ -131,6 +129,7 @@ function initializeActions() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // startup
   initializeTabList();
   initializeAllCheck();
   initializeActions();
