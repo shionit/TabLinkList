@@ -40,7 +40,7 @@ div.all_check_area {
   color: #009;
   display:inline;
   background: #eeeeee;
-  border:1px slid #00f;
+  border:1px solid #00f;
   -webkit-border-radius: 4px;
 }
 
@@ -58,7 +58,7 @@ div.all_check_area {
 
 #tabs {
   border:1px dashed #999;
-  height:320px;
+  max-height:320px;
   max-width: 360px;
   overflow:scroll;
   white-space: nowrap;

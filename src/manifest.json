@@ -1,12 +1,12 @@
 {
   "name": "TabLinkList",
   "description": "This extension makes a list of title and URL from selected tabs.",
-  "version": "0.4",
+  "version": "0.5",
   "permissions": [
     "tabs",
     "clipboardWrite"
   ],
-  "icons": { "48": "icon48.png"},
+  "icons": { "48": "icon48.png", "128": "icon128.png"},
   "browser_action": {
     "default_icon": "icon48.png",
     "default_title": "TabLinkList",
