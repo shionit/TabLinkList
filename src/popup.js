@@ -9,6 +9,10 @@ function appendTabItem(tab) {
   var checkbox = newItem.firstChild;
   checkbox.setAttribute("id", "tab_" + tab.id);
   checkbox.setAttribute("value", tab.id);
+  
+  if (tab.selected) {
+  	checkbox.setAttribute("checked", "checked");
+  }
 
   if (tab.favIconUrl) {
     // append favicon image
