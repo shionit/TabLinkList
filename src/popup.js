@@ -1,3 +1,4 @@
+// @require background.js
 
 function appendTabItem(tab) {
   // clone template node
@@ -9,6 +10,10 @@ function appendTabItem(tab) {
   var checkbox = newItem.firstChild;
   checkbox.setAttribute("id", "tab_" + tab.id);
   checkbox.setAttribute("value", tab.id);
+  
+  if (tab.selected) {
+  	checkbox.setAttribute("checked", "checked");
+  }
 
   if (tab.favIconUrl) {
     // append favicon image
@@ -64,37 +69,6 @@ function initializeAllCheck() {
   allCheck.addEventListener('click', function() {
     toggleSelectAll(this.checked);
   });
-}
-
-function copyTextToClipboard(text) {
-  // Copy provided text to the clipboard.
-  var copyFrom = document.createElement("textarea");
-  copyFrom.value = text;
-  document.body.appendChild(copyFrom);
-  copyFrom.select();
-  document.execCommand("Copy");
-  document.body.removeChild(copyFrom);
-}
-
-var copySimpleTextToClipboard = function(selectedTabs) {
-  var output = "";
-
-  // format output
-  for (var i = 0; i < selectedTabs.length; i++) {
-    var tab = selectedTabs[i];
-    
-    var title = tab.title;
-    var url = tab.url;
-    var item = title + "\n" + url;
-
-    if (0 < output.length) {
-      output += "\n\n";
-    }
-    output += item;
-  }
-  
-  // do action
-  copyTextToClipboard(output);
 }
 
 function processSelectedTabs(delegate) {
