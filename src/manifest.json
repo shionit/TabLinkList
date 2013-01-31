@@ -4,6 +4,7 @@
   "version": "0.6",
   "permissions": [
     "tabs",
+    "contextMenus",
     "clipboardWrite"
   ],
   "icons": { "48": "icon48.png", "128": "icon128.png"},
@@ -12,5 +13,6 @@
     "default_title": "TabLinkList",
     "default_popup": "popup.html"
   },
+  "background": { "scripts": ["background.js"] },
   "manifest_version": 2
 }
