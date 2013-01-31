@@ -34,8 +34,9 @@ var copySimpleTextToClipboard = function(selectedTabs) {
 chrome.contextMenus.create({
   "title": "Copy this page's Title and URL",
   "type": "normal",
+  "id": "copyThisPage",
   "contexts": ["all"],
   "onclick": function(info, tab) {
     copySimpleTextToClipboard([tab]);
   }
-});
+}, function() { console.log(chrome.extension.lastError);});
