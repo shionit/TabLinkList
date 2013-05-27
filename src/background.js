@@ -18,7 +18,7 @@ var copySimpleTextToClipboard = function(selectedTabs, formatFunc) {
 
     var item = "";
     if (formatFunc == null) {
-      item = FormatTitleAndURL(tab);
+      item = formatTitleAndURL(tab);
     } else {
       item = formatFunc(tab);
     }
@@ -34,11 +34,11 @@ var copySimpleTextToClipboard = function(selectedTabs, formatFunc) {
 }
 
 // formatFunctions
-function FormatTitleAndURL(tab) {
+function formatTitleAndURL(tab) {
   return tab.title + "\n" + tab.url;
 }
 
-function FormatTitleOnly(tab) {
+function formatTitleOnly(tab) {
   return tab.title;
 }
 
@@ -59,7 +59,7 @@ chrome.contextMenus.create({
   "id": "copyThisPageTitle",
   "contexts": ["all"],
   "onclick": function(info, tab) {
-    copySimpleTextToClipboard([tab], FormatTitleOnly);
+    copySimpleTextToClipboard([tab], formatTitleOnly);
   }
 }, function() { console.log(chrome.extension.lastError);});
 
