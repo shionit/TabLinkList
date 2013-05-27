@@ -1,7 +1,7 @@
 {
   "name": "TabLinkList",
   "description": "This extension makes a list of title and URL from selected tabs.",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "permissions": [
     "tabs",
     "contextMenus",
